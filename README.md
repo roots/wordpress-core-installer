@@ -1,10 +1,11 @@
 # WordPress Core Installer
 
-[![Build Status](https://travis-ci.org/johnpbloch/wordpress-core-installer.svg?branch=master)](https://travis-ci.org/johnpbloch/wordpress-core-installer)
-[![codecov](https://img.shields.io/codecov/c/github/johnpbloch/wordpress-core-installer/master.svg)](https://codecov.io/gh/johnpbloch/wordpress-core-installer)
+[![Build Status](https://travis-ci.org/roots/wordpress-core-installer.svg?branch=master)](https://travis-ci.org/roots/wordpress-core-installer)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![Packagist](https://img.shields.io/packagist/dt/johnpbloch/wordpress-core-installer.svg)](https://packagist.org/packages/johnpbloch/wordpress-core-installer)
-![GitHub tag](https://img.shields.io/github/tag/johnpbloch/wordpress-core-installer.svg)
+[![Packagist](https://img.shields.io/packagist/dt/roots/wordpress-core-installer.svg)](https://packagist.org/packages/roots/wordpress-core-installer)
+![GitHub tag](https://img.shields.io/github/tag/roots/wordpress-core-installer.svg)
+
+*This is a fork of [johnpbloch/wordpress-core-installer](https://github.com/johnpbloch/wordpress-core-installer) with some fixes to enhance compatibility with [roots/wordpress](https://packagist.org/packages/roots/wordpress)*
 
 A custom Composer plugin to install WordPress core outside of `vendor`.
 
@@ -18,7 +19,7 @@ To set up a custom WordPress build package to use this as a custom installer, ad
 ```
 "type": "wordpress-core",
 "require": {
-	"johnpbloch/wordpress-core-installer": "^1.0"
+	"roots/wordpress-core-installer": "^1.0"
 }
 ```
 
@@ -36,7 +37,7 @@ The root composer package can also declare custom paths as an object keyed by pa
 "extra": {
 	"wordpress-install-dir": {
 		"wordpress/wordpress": "wordpress",
-		"johnpbloch/wordpress-core": "jpb-wordpress"
+		"roots/wordpress-core": "roots-wordpress"
 	}
 }
 ```

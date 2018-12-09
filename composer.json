@@ -1,5 +1,5 @@
 {
-	"name": "johnpbloch/wordpress-core-installer",
+	"name": "roots/wordpress-core-installer",
 	"description": "A custom installer to handle deploying WordPress with composer",
 	"keywords": [
 		"wordpress"
@@ -12,6 +12,10 @@
 		{
 			"name": "John P. Bloch",
 			"email": "me@johnpbloch.com"
+		},
+		{
+			"name": "Roots",
+			"email": "team@roots.io"
 		}
 	],
 	"autoload": {
