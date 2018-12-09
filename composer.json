@@ -41,6 +41,9 @@
 	"conflict": {
 		"composer/installers": "<1.0.6"
 	},
+	"replace": {
+ 		"johnpbloch/wordpress-core-installer":"*"
+	},
 	"scripts": {
 		"test:phpunit": "phpunit",
 		"test": [

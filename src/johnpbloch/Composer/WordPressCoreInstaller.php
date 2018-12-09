@@ -67,7 +67,8 @@ class WordPressCoreInstaller extends LibraryInstaller {
 		}
 		if (
 			! empty( self::$_installedPaths[ $installationDir ] ) &&
-			$prettyName !== self::$_installedPaths[ $installationDir ]
+			$prettyName !== self::$_installedPaths[ $installationDir ] &&
+			$package->getType() !== self::TYPE
 		) {
 			$conflict_message = $this->getConflictMessage( $prettyName, self::$_installedPaths[ $installationDir ] );
 			throw new \InvalidArgumentException( $conflict_message );

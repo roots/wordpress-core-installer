@@ -136,6 +136,20 @@ class WordPressCoreInstallerTest extends TestCase {
 		$installer->getInstallPath( $package1 );
 		$installer->getInstallPath( $package2 );
 	}
+	
+	public function testTwoPackagesCannotShareDirectoryUnlessWpCoreType() {
+		$composer  = $this->createComposer();
+		$installer = new WordPressCoreInstaller( new NullIO(), $composer );
+		$package1  = new Package( 'johnpbloch/wordpress', '4.9.8', '4.9.8' );
+		$package1->setType('wordpress-core');
+		$package2  = new Package( 'roots/wordpress', '5.0', '5.0' );
+		$package2->setType('wordpress-core');
+		
+		$installer->getInstallPath( $package1 );
+		$installer->getInstallPath( $package2 );
+		
+		$this->assertTrue(true); // no exceptions thrown
+	}
 
 	/**
 	 * @dataProvider                   dataProviderSensitiveDirectories
