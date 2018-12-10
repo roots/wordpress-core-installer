@@ -19,17 +19,17 @@
 		}
 	],
 	"autoload": {
-		"psr-0": {
-			"johnpbloch\\Composer\\": "src/"
+		"psr-4": {
+			"Roots\\Composer\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Tests\\JohnPBloch\\Composer\\": "tests/"
+			"Tests\\Roots\\Composer\\": "tests/"
 		}
 	},
 	"extra": {
-		"class": "johnpbloch\\Composer\\WordPressCorePlugin"
+		"class": "Roots\\Composer\\WordPressCorePlugin"
 	},
 	"require": {
 		"composer-plugin-api": "^1.0"

@@ -19,13 +19,13 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-namespace Tests\JohnPBloch\Composer\phpunit;
+namespace Tests\Roots\Composer\phpunit;
 
 use Composer\Composer;
 use Composer\Config;
 use Composer\Installer\InstallationManager;
 use Composer\IO\NullIO;
-use johnpbloch\Composer\WordPressCorePlugin;
+use Roots\Composer\WordPressCorePlugin;
 use PHPUnit\Framework\TestCase;
 
 class WordPressCorePluginTest extends TestCase {
@@ -41,7 +41,7 @@ class WordPressCorePluginTest extends TestCase {
 
 		$installer = $installationManager->getInstaller( 'wordpress-core' );
 
-		$this->assertInstanceOf( '\johnpbloch\Composer\WordPressCoreInstaller', $installer );
+		$this->assertInstanceOf( '\Roots\Composer\WordPressCoreInstaller', $installer );
 	}
 
 }

@@ -19,7 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-namespace johnpbloch\Composer;
+namespace Roots\Composer;
 
 use Composer\Config;
 use Composer\Installer\LibraryInstaller;
