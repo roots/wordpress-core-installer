@@ -19,7 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-namespace johnpbloch\Composer;
+namespace Roots\Composer;
 
 use Composer\Config;
 use Composer\Installer\LibraryInstaller;
@@ -67,7 +67,8 @@ class WordPressCoreInstaller extends LibraryInstaller {
 		}
 		if (
 			! empty( self::$_installedPaths[ $installationDir ] ) &&
-			$prettyName !== self::$_installedPaths[ $installationDir ]
+			$prettyName !== self::$_installedPaths[ $installationDir ] &&
+			$package->getType() !== self::TYPE
 		) {
 			$conflict_message = $this->getConflictMessage( $prettyName, self::$_installedPaths[ $installationDir ] );
 			throw new \InvalidArgumentException( $conflict_message );

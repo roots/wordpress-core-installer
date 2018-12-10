@@ -19,14 +19,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-namespace Tests\JohnPBloch\Composer\phpunit;
+namespace Tests\Roots\Composer\phpunit;
 
 use Composer\Composer;
 use Composer\Config;
 use Composer\IO\NullIO;
 use Composer\Package\Package;
 use Composer\Package\RootPackage;
-use johnpbloch\Composer\WordPressCoreInstaller;
+use Roots\Composer\WordPressCoreInstaller;
 use PHPUnit\Framework\TestCase;
 
 class WordPressCoreInstallerTest extends TestCase {
@@ -136,6 +136,20 @@ class WordPressCoreInstallerTest extends TestCase {
 		$installer->getInstallPath( $package1 );
 		$installer->getInstallPath( $package2 );
 	}
+	
+	public function testTwoPackagesCannotShareDirectoryUnlessWpCoreType() {
+		$composer  = $this->createComposer();
+		$installer = new WordPressCoreInstaller( new NullIO(), $composer );
+		$package1  = new Package( 'johnpbloch/wordpress', '4.9.8', '4.9.8' );
+		$package1->setType('wordpress-core');
+		$package2  = new Package( 'roots/wordpress', '5.0', '5.0' );
+		$package2->setType('wordpress-core');
+		
+		$installer->getInstallPath( $package1 );
+		$installer->getInstallPath( $package2 );
+		
+		$this->assertTrue(true); // no exceptions thrown
+	}
 
 	/**
 	 * @dataProvider                   dataProviderSensitiveDirectories
@@ -158,7 +172,7 @@ class WordPressCoreInstallerTest extends TestCase {
 	}
 
 	private function resetInstallPaths() {
-		$prop = new \ReflectionProperty( '\johnpbloch\Composer\WordPressCoreInstaller', '_installedPaths' );
+		$prop = new \ReflectionProperty( '\Roots\Composer\WordPressCoreInstaller', '_installedPaths' );
 		$prop->setAccessible( true );
 		$prop->setValue( array() );
 	}
