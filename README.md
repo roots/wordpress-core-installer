@@ -19,7 +19,7 @@ To set up a custom WordPress build package to use this as a custom installer, ad
 ```json
 "type": "wordpress-core",
 "require": {
-	"roots/wordpress-core-installer": "^2.0"
+	"roots/wordpress-core-installer": "^1.100"
 }
 ```
 
