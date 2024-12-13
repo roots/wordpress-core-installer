@@ -1,6 +1,6 @@
 # WordPress Core Installer
 
-[![Build Status](https://travis-ci.com/roots/wordpress-core-installer.svg?branch=master)](https://travis-ci.com/roots/wordpress-core-installer)
+[![Tests](https://github.com/roots/wordpress-core-installer/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/roots/wordpress-core-installer/actions/workflows/tests.yml)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![Packagist](https://img.shields.io/packagist/dt/roots/wordpress-core-installer.svg)](https://packagist.org/packages/roots/wordpress-core-installer)
 ![GitHub tag](https://img.shields.io/github/tag/roots/wordpress-core-installer.svg)

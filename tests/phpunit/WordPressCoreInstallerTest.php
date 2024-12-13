@@ -33,7 +33,9 @@ class WordPressCoreInstallerTest extends TestCase
 {
     public function testSupports()
     {
-        $installer = new WordPressCoreInstaller(new NullIO(), $this->createComposer());
+        $composer = $this->createComposer();
+        $composer->setPackage(new RootPackage('root/package', '1.0.0', '1.0.0'));
+        $installer = new WordPressCoreInstaller(new NullIO(), $composer);
 
         $this->assertTrue($installer->supports('wordpress-core'));
         $this->assertFalse($installer->supports('not-wordpress-core'));
@@ -41,7 +43,9 @@ class WordPressCoreInstallerTest extends TestCase
 
     public function testDefaultInstallDir()
     {
-        $installer = new WordPressCoreInstaller(new NullIO(), $this->createComposer());
+        $composer = $this->createComposer();
+        $composer->setPackage(new RootPackage('root/package', '1.0.0', '1.0.0'));
+        $installer = new WordPressCoreInstaller(new NullIO(), $composer);
         $package   = new Package('johnpbloch/test-package', '1.0.0.0', '1.0.0');
 
         $this->assertEquals('wordpress', $installer->getInstallPath($package));
@@ -96,7 +100,9 @@ class WordPressCoreInstallerTest extends TestCase
 
     public function testCorePackageCanDefineInstallDirectory()
     {
-        $installer = new WordPressCoreInstaller(new NullIO(), $this->createComposer());
+        $composer = $this->createComposer();
+        $composer->setPackage(new RootPackage('root/package', '1.0.0', '1.0.0'));
+        $installer = new WordPressCoreInstaller(new NullIO(), $composer);
         $package   = new Package('test/has-default-install-dir', '0.1.0.0', '0.1');
         $package->setExtra(array(
             'wordpress-install-dir' => 'not-wordpress',
@@ -128,6 +134,7 @@ class WordPressCoreInstallerTest extends TestCase
             'Two packages (test/bazbat and test/foobar) cannot share the same directory!'
         );
         $composer  = $this->createComposer();
+        $composer->setPackage(new RootPackage('root/package', '1.0.0', '1.0.0'));
         $installer = new WordPressCoreInstaller(new NullIO(), $composer);
         $package1  = new Package('test/foobar', '1.1.1.1', '1.1.1.1');
         $package2  = new Package('test/bazbat', '1.1.1.1', '1.1.1.1');
@@ -139,6 +146,7 @@ class WordPressCoreInstallerTest extends TestCase
     public function testTwoPackagesCannotShareDirectoryUnlessWpCoreType()
     {
         $composer  = $this->createComposer();
+        $composer->setPackage(new RootPackage('root/package', '1.0.0', '1.0.0'));
         $installer = new WordPressCoreInstaller(new NullIO(), $composer);
         $package1  = new Package('johnpbloch/wordpress', '4.9.8', '4.9.8');
         $package1->setType('wordpress-core');
@@ -162,6 +170,7 @@ class WordPressCoreInstallerTest extends TestCase
             true
         );
         $composer  = $this->createComposer();
+        $composer->setPackage(new RootPackage('root/package', '1.0.0', '1.0.0'));
         $installer = new WordPressCoreInstaller(new NullIO(), $composer);
         $package   = new Package('test/package', '1.1.0.0', '1.1');
         $package->setExtra(array( 'wordpress-install-dir' => $directory ));
@@ -193,7 +202,16 @@ class WordPressCoreInstallerTest extends TestCase
     private function createComposer()
     {
         $composer = new Composer();
-        $composer->setConfig(new Config());
+        $config = new Config();
+        $composer->setConfig($config);
+        
+        // Set up DownloadManager with proper Filesystem
+        $downloadManager = new \Composer\Downloader\DownloadManager(
+            new \Composer\IO\NullIO(),
+            false,
+            new \Composer\Util\Filesystem()
+        );
+        $composer->setDownloadManager($downloadManager);
 
         return $composer;
     }

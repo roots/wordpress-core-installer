@@ -26,6 +26,7 @@ use Composer\Config;
 use Composer\Installer\InstallationManager;
 use Composer\IO\IOInterface;
 use Composer\IO\NullIO;
+use Composer\Package\RootPackage;
 use Composer\Plugin\PluginInterface;
 use Composer\Test\Mock\HttpDownloaderMock;
 use Composer\Util\HttpDownloader;
@@ -38,11 +39,24 @@ class WordPressCorePluginTest extends TestCase
     public function testActivate()
     {
         $composer = new Composer();
-        $composer->setConfig(new Config());
-        $nullIO              = new NullIO();
+        $config = new Config();
+        $composer->setConfig($config);
+        
+        // Set up root package
+        $rootPackage = new RootPackage('root/package', '1.0.0', '1.0.0');
+        $composer->setPackage($rootPackage);
+        
+        // Set up DownloadManager
+        $downloadManager = new \Composer\Downloader\DownloadManager(
+            new NullIO(),
+            false,
+            new \Composer\Util\Filesystem()
+        );
+        $composer->setDownloadManager($downloadManager);
+        
+        $nullIO = new NullIO();
         $installationManager = $this->getInstallationManager($composer, $nullIO);
         $composer->setInstallationManager($installationManager);
-        $composer->setConfig(new Config());
 
         $plugin = new WordPressCorePlugin();
         $plugin->activate($composer, $nullIO);
