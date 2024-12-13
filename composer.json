@@ -37,7 +37,7 @@
 	},
 	"require-dev": {
 		"composer/composer": "^1.0 || ^2.0",
-		"phpunit/phpunit": ">=5.7.27"
+		"phpunit/phpunit": "^9.6"
 	},
 	"conflict": {
 		"composer/installers": "<1.0.6"

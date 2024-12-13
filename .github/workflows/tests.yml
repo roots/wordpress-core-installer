@@ -32,7 +32,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Install specific PHPUnit version
-        run: composer require "phpunit/phpunit:5.7.27" --dev
+        run: composer require "phpunit/phpunit:^9.6" --dev
 
       - name: Run tests
         run: composer test
