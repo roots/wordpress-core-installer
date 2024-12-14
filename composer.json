@@ -33,7 +33,7 @@
 	},
 	"require": {
 		"composer-plugin-api": "^1.0 || ^2.0",
-		"php": ">=5.6.0"
+		"php": ">=8.1"
 	},
 	"require-dev": {
 		"composer/composer": "^1.0 || ^2.0",
