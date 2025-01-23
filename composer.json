@@ -1,6 +1,6 @@
 {
 	"name": "roots/wordpress-core-installer",
-	"description": "A custom installer to handle deploying WordPress with composer",
+	"description": "A Composer custom installer to handle installing WordPress as a dependency",
 	"keywords": [
 		"wordpress"
 	],
