@@ -19,11 +19,9 @@ To set up a custom WordPress build package to use this as a custom installer, ad
 ```json
 "type": "wordpress-core",
 "require": {
-	"roots/wordpress-core-installer": "^2.0"
+	"roots/wordpress-core-installer": "^3.0"
 }
 ```
-
-If you need to maintain support for PHP versions lower than 8.1 (not recommended!), use `^1.0` as your version constraint in the above.
 
 By default, this package will install a `wordpress-core` type package in the `wordpress` directory. To change this you can add the following to either your custom WordPress core type package or the root composer package:
 
