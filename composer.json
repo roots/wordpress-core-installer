@@ -33,17 +33,17 @@
 	},
 	"require": {
 		"composer-plugin-api": "^1.0 || ^2.0",
-		"php": ">=8.1"
+		"php": ">=7.2.24"
 	},
 	"require-dev": {
 		"composer/composer": "^1.0 || ^2.0",
-		"phpunit/phpunit": "^9.6"
+		"phpunit/phpunit": "^8.5"
 	},
 	"conflict": {
 		"composer/installers": "<1.0.6"
 	},
 	"replace": {
- 		"johnpbloch/wordpress-core-installer":"*"
+		"johnpbloch/wordpress-core-installer": "*"
 	},
 	"scripts": {
 		"test:phpunit": "phpunit",
