@@ -33,9 +33,6 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: Install specific PHPUnit version
-        run: composer require "phpunit/phpunit:^9.6" --dev
-
       - name: Run tests
         run: composer test
 
