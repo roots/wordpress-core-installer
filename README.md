@@ -16,36 +16,7 @@ For more information on this site setup and using Composer to manage a whole Wor
 
 ## Support us
 
-We're dedicated to pushing modern WordPress development forward through our open source projects, and we need your support to keep building. You can support our work by purchasing [Radicle](https://roots.io/radicle/), our recommended WordPress stack, or by [sponsoring us on GitHub](https://github.com/sponsors/roots). Every contribution directly helps us create better tools for the WordPress ecosystem.
-
-### Usage
-To set up a custom WordPress build package to use this as a custom installer, add the following to your package's composer file:
-
-```json
-"type": "wordpress-core",
-"require": {
-	"roots/wordpress-core-installer": "^3.0"
-}
-```
-
-By default, this package will install a `wordpress-core` type package in the `wordpress` directory. To change this you can add the following to either your custom WordPress core type package or the root composer package:
-
-```json
-"extra": {
-	"wordpress-install-dir": "custom/path"
-}
-```
-
-The root composer package can also declare custom paths as an object keyed by package name:
-
-```json
-"extra": {
-	"wordpress-install-dir": {
-		"wordpress/wordpress": "wordpress",
-		"roots/wordpress-core": "roots-wordpress"
-	}
-}
-```
+Roots is an independent open source org, supported only by developers like you. Your sponsorship funds [WP Packages](https://wp-packages.org/) and the entire Roots ecosystem, and keeps them independent. Support us by purchasing [Radicle](https://roots.io/radicle/) or [sponsoring us on GitHub](https://github.com/sponsors/roots) — sponsors get access to our private Discord.
 
 ## Community
 
