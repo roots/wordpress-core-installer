@@ -24,11 +24,8 @@ namespace Tests\Roots\Composer\phpunit;
 use Composer\Composer;
 use Composer\Config;
 use Composer\Installer\InstallationManager;
-use Composer\IO\IOInterface;
 use Composer\IO\NullIO;
 use Composer\Package\RootPackage;
-use Composer\Plugin\PluginInterface;
-use Composer\Test\Mock\HttpDownloaderMock;
 use Composer\Util\HttpDownloader;
 use Composer\Util\Loop;
 use Roots\Composer\WordPressCorePlugin;
@@ -55,7 +52,9 @@ class WordPressCorePluginTest extends TestCase
         $composer->setDownloadManager($downloadManager);
         
         $nullIO = new NullIO();
-        $installationManager = $this->getInstallationManager($composer, $nullIO);
+        $http = new HttpDownloader($nullIO, $composer->getConfig());
+        $loop = new Loop($http);
+        $installationManager = new InstallationManager($loop, $nullIO);
         $composer->setInstallationManager($installationManager);
 
         $plugin = new WordPressCorePlugin();
@@ -64,29 +63,5 @@ class WordPressCorePluginTest extends TestCase
         $installer = $installationManager->getInstaller('wordpress-core');
 
         $this->assertInstanceOf('\Roots\Composer\WordPressCoreInstaller', $installer);
-    }
-
-    /**
-     * @param Composer $composer
-     * @param IOInterface $io
-     *
-     * @return InstallationManager
-     */
-    private function getInstallationManager($composer, $io)
-    {
-        $installationManager = null;
-        switch (explode('.', PluginInterface::PLUGIN_API_VERSION)[0]) {
-            case '1':
-                $installationManager = new InstallationManager();
-                break;
-            case '2':
-            default:
-                $http                = new HttpDownloader($io, $composer->getConfig());
-                $loop                = new Loop($http);
-                $installationManager = new InstallationManager($loop, $io);
-                break;
-        }
-
-        return $installationManager;
     }
 }

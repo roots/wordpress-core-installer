@@ -32,11 +32,11 @@
 		"class": "Roots\\Composer\\WordPressCorePlugin"
 	},
 	"require": {
-		"composer-plugin-api": "^1.0 || ^2.0",
+		"composer-plugin-api": "^2.0",
 		"php": ">=7.2.24"
 	},
 	"require-dev": {
-		"composer/composer": "^1.0 || ^2.0",
+		"composer/composer": "^2.0",
 		"phpunit/phpunit": "^8.5"
 	},
 	"conflict": {

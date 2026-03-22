@@ -221,11 +221,7 @@ class WordPressCoreInstallerTest extends TestCase
         $this->expectException($class);
         if ($message) {
             if ($isRegExp) {
-                if (method_exists($this, 'expectExceptionMessageRegExp')) {
-                    $this->expectExceptionMessageRegExp($message);
-                } else {
-                    $this->expectExceptionMessageMatches($message);
-                }
+                $this->expectExceptionMessageMatches($message);
             } else {
                 $this->expectExceptionMessage($message);
             }
