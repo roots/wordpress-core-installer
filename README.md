@@ -14,6 +14,17 @@ This installer is meant to support a rather specific WordPress installation setu
 
 For more information on this site setup and using Composer to manage a whole WordPress site, [check out @Rarst's informational website](https://composer.rarst.net/) which also includes [a site stack example using this package](https://composer.rarst.net/recipe/site-stack/).
 
+## Requirements
+
+- Composer 2+
+- PHP 7.2.24+
+
+Composer 2 requires explicitly allowing plugins. If needed, run:
+
+```bash
+composer config --no-plugins allow-plugins.roots/wordpress-core-installer true
+```
+
 ## Support us
 
 Roots is an independent open source org, supported only by developers like you. Your sponsorship funds [WP Packages](https://wp-packages.org/) and the entire Roots ecosystem, and keeps them independent. Support us by purchasing [Radicle](https://roots.io/radicle/) or [sponsoring us on GitHub](https://github.com/sponsors/roots) — sponsors get access to our private Discord.
